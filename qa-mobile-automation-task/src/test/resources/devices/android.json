@@ -1,0 +1,14 @@
+{
+  "devices": [
+    {
+      "udid": "emulator-5554",
+      "platformVersion": "17",
+      "systemPort": 8201
+    },
+    {
+      "udid": "emulator-5556",
+      "platformVersion": "17",
+      "systemPort": 8202
+    }
+  ]
+}
