@@ -15,11 +15,11 @@ public class AndroidDriverFactory implements DriverFactory {
   private static final String PLATFORM_NAME = "Android";
   private static final String AUTOMATION_NAME = "UiAutomator2";
   private static final String CAPABILITY_PLATFORM_NAME = "platformName";
-  private static final String CAPABILITY_PLATFORM_VERSION = "platformVersion";
-  private static final String CAPABILITY_UDID = "udid";
-  private static final String CAPABILITY_AUTOMATION_NAME = "automationName";
-  private static final String CAPABILITY_SYSTEM_PORT = "systemPort";
-  private static final String CAPABILITY_APP_PACKAGE = "appPackage";
+  private static final String CAPABILITY_PLATFORM_VERSION = "appium:platformVersion";
+  private static final String CAPABILITY_UDID = "appium:udid";
+  private static final String CAPABILITY_AUTOMATION_NAME = "appium:automationName";
+  private static final String CAPABILITY_SYSTEM_PORT = "appium:systemPort";
+  private static final String CAPABILITY_APP_PACKAGE = "appium:appPackage";
   private static final String APPIUM_SERVER_URL_PROPERTY = "appium.server.url";
   private static final String APP_PACKAGE_PROPERTY = "app.package";
 

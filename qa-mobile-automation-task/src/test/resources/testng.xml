@@ -5,6 +5,7 @@
 
   <listeners>
     <listener class-name="com.qa.mobile.listeners.TestExecutionListener"/>
+    <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
   </listeners>
 
   <test name="Mobile Tests">

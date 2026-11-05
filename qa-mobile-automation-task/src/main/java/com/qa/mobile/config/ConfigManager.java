@@ -12,6 +12,7 @@ public final class ConfigManager {
     private static final String PLATFORM_PROPERTY = "platform";
     private static final String PLATFORM_ENV_VARIABLE = "PLATFORM";
     private static final String DEFAULT_PLATFORM = "ANDROID";
+    private static final String APP_PACKAGE_PROPERTY = "app.package";
 
     static {
         try (InputStream input = ConfigManager.class
@@ -62,5 +63,9 @@ public final class ConfigManager {
 
     public static int getIntProperty(String key) {
         return Integer.parseInt(getProperty(key));
+    }
+
+    public static String getAppPackage() {
+        return getProperty(APP_PACKAGE_PROPERTY);
     }
 }
