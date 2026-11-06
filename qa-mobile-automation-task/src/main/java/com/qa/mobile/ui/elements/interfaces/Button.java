@@ -2,10 +2,10 @@ package com.qa.mobile.ui.elements.interfaces;
 
 public interface Button {
 
-  void tap();
+    void tap();
 
-  boolean isDisplayed();
+    boolean isDisplayed();
 
-  void waitUntilDisplayed();
+    void waitUntilDisplayed();
 
 }

@@ -1,4 +1,4 @@
-package com.qa.mobile.config;
+package com.qa.mobile.enums;
 
 public enum Platform {
     ANDROID,

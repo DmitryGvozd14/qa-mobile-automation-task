@@ -1,7 +1,6 @@
 package com.qa.mobile.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -10,19 +9,18 @@ public final class DeviceConfigLoader {
 
     private static final String ANDROID_DEVICES_CONFIG = "devices/android.json";
     private static final String IOS_DEVICES_CONFIG = "devices/ios.json";
-    private static final String DEVICES_PROPERTY = "devices";
-
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     private DeviceConfigLoader() {
     }
 
+    private record DeviceList(List<DeviceConfig> devices) {
+    }
+
     public static List<DeviceConfig> loadDevices() {
         String configPath = getDevicesConfigPath();
 
-        try (InputStream input = DeviceConfigLoader.class
-            .getClassLoader()
-            .getResourceAsStream(configPath)) {
+        try (InputStream input = DeviceConfigLoader.class.getClassLoader().getResourceAsStream(configPath)) {
 
             if (input == null) {
                 throw new IllegalStateException("Device configuration file not found: " + configPath);
@@ -46,8 +44,5 @@ public final class DeviceConfigLoader {
             case ANDROID -> ANDROID_DEVICES_CONFIG;
             case IOS -> IOS_DEVICES_CONFIG;
         };
-    }
-
-    private record DeviceList(List<DeviceConfig> devices) {
     }
 }

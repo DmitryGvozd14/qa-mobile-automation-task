@@ -2,25 +2,25 @@ package com.qa.mobile.ui.elements.interfaces;
 
 public interface TextField {
 
-  void enterText(String text);
+    void enterText(String text);
 
-  void pasteText(String text);
+    void pasteText(String text);
 
-  void typeText(String text);
+    void typeText(String text);
 
-  boolean isMasked();
+    boolean isMasked();
 
-  void clearAndPaste(String text);
+    void clearAndPaste(String text);
 
-  void clearAndType(String text);
+    void clearAndType(String text);
 
-  void clear();
+    void clear();
 
-  String getText();
+    String getText();
 
-  String getValue();
+    String getValue();
 
-  boolean isDisplayed();
+    boolean isDisplayed();
 
-  void waitUntilDisplayed();
+    void waitUntilDisplayed();
 }

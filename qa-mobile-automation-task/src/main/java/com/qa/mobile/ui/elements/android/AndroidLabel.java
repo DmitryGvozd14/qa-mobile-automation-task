@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 
 public class AndroidLabel extends BaseElement implements Label {
 
-  public AndroidLabel(By locator, String name) {
-    super(locator, name);
-  }
+    public AndroidLabel(By locator, String name) {
+        super(locator, name);
+    }
 }

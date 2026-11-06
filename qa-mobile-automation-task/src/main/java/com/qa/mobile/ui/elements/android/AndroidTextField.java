@@ -12,78 +12,105 @@ import java.util.Base64;
 import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class AndroidTextField extends BaseElement implements TextField {
 
-  public AndroidTextField(By locator, String name) {
-    super(locator, name);
-  }
+    private static final Logger LOGGER = LoggerFactory.getLogger(AndroidTextField.class);
 
-  @Override
-  public void enterText(String text) {
-    var element = getElement();
-    element.clear();
-    element.sendKeys(text);
-  }
-
-  @Override
-  public void pasteText(String text) {
-    AndroidDriver driver = (AndroidDriver) DriverManager.getDriver();
-
-    String encodedText = Base64.getEncoder()
-        .encodeToString(text.getBytes(StandardCharsets.UTF_8));
-
-    driver.setClipboard(
-        ClipboardContentType.PLAINTEXT,
-        encodedText.getBytes(StandardCharsets.UTF_8)
-    );
-
-    getElement().click();
-    driver.pressKey(new KeyEvent(AndroidKey.PASTE));
-  }
-
-  @Override
-  public void clear() {
-    getElement().clear();
-  }
-
-  @Override
-  public String getValue() {
-    WebElement element = getElement();
-
-    if ("true".equals(element.getAttribute("showing-hint"))) {
-      return "";
+    public AndroidTextField(By locator, String name) {
+        super(locator, name);
     }
 
-    return element.getAttribute("text");
-  }
+    @Override
+    public void enterText(String text) {
+        LOGGER.info("Entering text into field: {}", name);
 
-  @Override
-  public void typeText(String text) {
-    AndroidDriver driver = (AndroidDriver) DriverManager.getDriver();
+        var element = getElement();
+        element.clear();
+        element.sendKeys(text);
 
-    getElement().click();
+        LOGGER.info("Text entered successfully into field: {}", name);
+    }
 
-    driver.executeScript(
-        "mobile: type",
-        Map.of("text", text)
-    );
-  }
+    @Override
+    public void pasteText(String text) {
+        LOGGER.info("Pasting text into field: {}", name);
 
-  @Override
-  public boolean isMasked() {
-    return Boolean.parseBoolean(getElement().getAttribute("password"));
-  }
+        AndroidDriver driver = (AndroidDriver) DriverManager.getDriver();
 
-  @Override
-  public void clearAndPaste(String text) {
-    clear();
-    pasteText(text);
-  }
+        String encodedText = Base64.getEncoder().encodeToString(text.getBytes(StandardCharsets.UTF_8));
 
-  @Override
-  public void clearAndType(String text) {
-    clear();
-    typeText(text);
-  }
+        driver.setClipboard(
+                ClipboardContentType.PLAINTEXT,
+                encodedText.getBytes(StandardCharsets.UTF_8)
+        );
+
+        getElement().click();
+        driver.pressKey(new KeyEvent(AndroidKey.PASTE));
+
+        LOGGER.info("Text pasted successfully into field: {}", name);
+    }
+
+    @Override
+    public void clear() {
+        LOGGER.info("Clearing field: {}", name);
+
+        getElement().clear();
+
+        LOGGER.info("Field cleared successfully: {}", name);
+    }
+
+    @Override
+    public String getValue() {
+        LOGGER.info("Getting value from field: {}", name);
+
+        WebElement element = getElement();
+
+        if ("true".equals(element.getAttribute("showing-hint"))) {
+            return "";
+        }
+
+        return element.getAttribute("text");
+    }
+
+    @Override
+    public void typeText(String text) {
+        LOGGER.info("Typing text into field: {}", name);
+
+        AndroidDriver driver = (AndroidDriver) DriverManager.getDriver();
+
+        getElement().click();
+
+        driver.executeScript(
+                "mobile: type",
+                Map.of("text", text)
+        );
+
+        LOGGER.info("Text typed successfully into field: {}", name);
+    }
+
+    @Override
+    public boolean isMasked() {
+        boolean masked = Boolean.parseBoolean(
+                getElement().getAttribute("password")
+        );
+
+        LOGGER.info("Password visibility: {}", masked ? "disabled" : "enabled");
+
+        return masked;
+    }
+
+    @Override
+    public void clearAndPaste(String text) {
+        clear();
+        pasteText(text);
+    }
+
+    @Override
+    public void clearAndType(String text) {
+        clear();
+        typeText(text);
+    }
 }

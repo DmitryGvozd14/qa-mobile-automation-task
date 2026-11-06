@@ -8,11 +8,11 @@ import org.openqa.selenium.By;
 
 public interface ElementFactory {
 
-  Button getButton(By locator, String name);
+    Button getButton(By locator, String name);
 
-  TextField getTextField(By locator, String name);
+    TextField getTextField(By locator, String name);
 
-  Label getLabel(By locator, String name);
+    Label getLabel(By locator, String name);
 
-  ToggleIcon getToggleIcon(By locator, String name);
+    ToggleIcon getToggleIcon(By locator, String name);
 }

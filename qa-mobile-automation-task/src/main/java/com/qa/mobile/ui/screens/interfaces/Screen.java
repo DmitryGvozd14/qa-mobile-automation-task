@@ -2,7 +2,7 @@ package com.qa.mobile.ui.screens.interfaces;
 
 public interface Screen {
 
-  boolean isDisplayed();
+    boolean isDisplayed();
 
-  void waitUntilDisplayed();
+    void waitUntilDisplayed();
 }

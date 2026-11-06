@@ -6,8 +6,8 @@ import io.appium.java_client.AppiumBy;
 
 public class AndroidLoginSuccessScreen extends BaseScreen implements LoginSuccessScreen {
 
-  public AndroidLoginSuccessScreen() {
-    super(AppiumBy.xpath("//android.widget.TextView[@text='Вход в Alfa-Test выполнен']"),
-        "Login Success screen");
-  }
+    public AndroidLoginSuccessScreen() {
+        super(AppiumBy.xpath("//android.widget.TextView[@text='Вход в Alfa-Test выполнен']"),
+                "Login Success screen");
+    }
 }
