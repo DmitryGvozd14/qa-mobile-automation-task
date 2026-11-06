@@ -1,0 +1,18 @@
+{
+  "devices": [
+    {
+      "udid": "emulator-5554",
+      "deviceName": "Pixel 10 Pro XL",
+      "platform": "Android",
+      "platformVersion": "17",
+      "systemPort": 8200
+    },
+    {
+      "udid": "emulator-5556",
+      "deviceName": "Pixel 10 Pro",
+      "platform": "Android",
+      "platformVersion": "17",
+      "systemPort": 8201
+    }
+  ]
+}
